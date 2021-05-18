@@ -1,0 +1,105 @@
+\documentclass[ ngerman, fontsize= 12pt, paper=a4, headings=big, titlepage=true]{article}
+
+\usepackage{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+%\usepackage{lmodern, microtype}
+\usepackage{csquotes}
+\usepackage{hyperref}
+\usepackage{enumerate}
+
+%Tablellen:
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{rotating}
+
+%Mathematik
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{bbm}
+\usepackage{color}
+\usepackage[
+left=3cm,
+right=2cm,
+top=2.5cm,
+bottom=2cm,
+%includeheadfoot
+]{geometry}
+
+\begin{document}
+	
+\begin{center}
+	
+\textbf{\Large{ Übersicht über die Versuchssplanung der 1.Runde}} \\
+	
+Kaya Maria Bayer, Ketevan Gurtskaia, Alicia Hemmersbach, Danuscha Große-Hering
+
+\end{center}
+
+\textbf{1. Einleitung (ein Satz reicht bei Präsentationen und Postern)}
+\begin{enumerate}[-]
+	\item Motivation, kurze Beschreibung von Inhalt und Ziel des Experimentes
+	\item kurze Erläuterung der Vorgehensweise
+	\item Überblick über die einzelnen Kapitel
+\end{enumerate}
+
+\textbf{2. Problemstellung und Versuchsbedingungen}
+\begin{enumerate}[-]
+	\item Beschreibung der Ziele des Experimentes \\
+		Wie genau können vorgegebene Längen gezeichnet werden? Können kürzere Längen besser gezeichnet werden?
+	\item Beschreibung der Versuchsbedingungen\\
+		Ort: möglichst leerer Raum, damit keine Längen verglichen werden können\\
+		Längen: 5 cm und 20 cm\\
+		Probanden: 32\\
+\end{enumerate}
+
+\textbf{3. Analyse des Problems}
+\begin{enumerate}[-]
+	\item Was ist die interessierende abhängige Variable?- vorgegebene Länge
+	\item Was sind interessierende Einflussvariablen und wie können diese variiert werden? \\
+		Größe des Papiers, Größe der Stiftmine
+	\item Was sind mögliche Störvariablen und welche können kontrolliert werden?\\
+		Sehschwäche (nicht kontrollierbar), Oberfläche des Tisches, Anzahl der Personen im Raum, Alter, Geschlecht 
+	\item Von welchen Störvariablen soll noch der Einfluss erfasst werden? \\
+		Größe des Papiers,  Größe der Stiftmine
+	\item Welche Störvariabalen sollen als Blockvariablen aufgefasst werden? \\
+		Größe des Papiers(DIN A4, DIN A3), Größe der Stiftmine(2mm, 0.5mm)
+\end{enumerate}
+
+\textbf{4. Modell, Hypothesen und statistische Auswertungsmethoden}
+\begin{enumerate}[-]
+	\item  Mathematische Formulierung des Modells und der Null- und Alternativ-Hypothesen \\
+		$xi_n$ := Länge  der gezeichneten Linie, $Xi:=$ Vorgegebene Länge $\Rightarrow yi_n := xi_n-Xi$ \\
+		Hypothese 1: $yi_n =0 $  vs $. yi_n \neq 0$ \\
+		Hypothese 2: $x1_n \geq x2_n  $ vs. $ x1_n < x2_n$
+	\item Nennung der statistischen Auswertungsmethoden inkl. der R-Funktionen. Die Darstellung soll möglichst allgemein sein und sich nicht auf den Spezialfall des Experimentes
+	beziehen.
+\end{enumerate}
+
+\textbf{5. Versuchsplanung}
+\begin{enumerate}[-]
+	\item  Genaue Beschreibung der Versuchsplanung, d.h.
+	\begin{enumerate}[*]
+		\item Angabe, was für die Maximierung der Primärvariation, für die Minimierung der
+		Sekundärvariation und für die Identifizierbarkeit dient.
+		\item Verwendung von Fachbegriffen wie Eliminierung, Konstanthaltung, Art der Verblindung, Blockbildung, Parallelisierung, Randomisierung, Umwandlung von Störvariablen, Wiederholungsmessung
+		\item Nutzen von vollständig randomisierten Plänen, randomisierten vollständigen Blockplänen, systematisch variierten vollständigen Blockplänen, geschachtelten Blockvariablen, balanzierten unvollständigen Blockplänen
+
+		\item Geben Sie genau an, mit welchen R-Funktionen, was bestimmt wurde.
+		\item Bei Bestimmung des Stichprobenumfanges soll die Vorgehensweise genau beschrieben
+		werden. 
+		\item Außerdem soll beschrieben werden, wer, wann, was, wie, unter welchen Bedingungen
+		untersuchen soll. Dabei reicht im Hauptteil des Berichtes, in der Präsentation und
+		im Poster die Angabe des Namens der Methode bzw. der R-Funktion, mit der
+		der Versuchsplan und die Randomisierung gewonnen wurde. Die genaue Angabe,
+		wer, wann, was, wie, unter welchen Bedingungen untersuchen soll, kann im Anhang
+		gegeben werden
+		
+	\end{enumerate}
+\end{enumerate}
+
+\end{document}
