@@ -1,0 +1,36 @@
+---
+title: "Versuchsplan"
+author: "Danuscha Große-Hering"
+date: "26.Mai 2021"
+output: pdf_document
+---
+
+```{r}
+library(agricolae)
+library(knitr)
+
+Plan <-design.ab(c(2,2,4), r=2, design = "crd", seed = 2021, serie = 0)$book
+Plan_2 <- data.frame(Proband=Plan$plots,Papiergroesse= Plan$A,
+                     Stiftgroesse=Plan$B, Versuchsleiterin=Plan$C)
+kable(t(Plan_2[1:16,]), caption= "Versuchsplan 1.Haelfte")
+kable(t(Plan_2[17:32,]), caption= "Versuchsplan 2.Haelfte")
+```
+
+\newpage
+
+# Erklaerungen:
+A ist unsere Papiergroesse mit zwei Stufen, sodass 1:= A4 und 2:= A3 bedeutet 
+
+B ist unsere Stiftgroesse auch mit zwei Stufen, sodass 1:= 0.5mm und 2:=2mm  bedeutet
+
+c ist die durchführende Versuchsleiterin welche noch zugewiesen werden müssen:
+
+```{r}
+Versuchsleiterin <- c("Alicia","Kaya","Ketevan","Danuscha")
+
+set.seed(2021)
+L <- data.frame(Nummer=1:4, Leiterin=sample(Versuchsleiterin,4))
+       
+kable(L, caption="Dekodierung der Versuchsleiterinnen")
+```
+
