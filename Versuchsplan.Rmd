@@ -2,8 +2,53 @@
 title: "Versuchsplan"
 author: "Danuscha Große-Hering"
 date: "1.Juni 2021"
+header-includes:
+   - \usepackage{hhline,float}
 output: pdf_document
 ---
+
+
+# Minimale Stichprobengroesse. 
+
+$\alpha =0.05$, $\beta = 0.95$ und $\delta =0.5$ betrachte die Stichprobengroesse n $\in [1,28]$
+
+```{r}
+#f1 ist fuer die Stichprobengroesse des einseitigen t-Test
+f1 <- function(x)
+{
+  p1<-pt(q= qt(df=x-1,p=0.975), df=x-1, ncp=0.5*sqrt(x))
+  p2<-pt(q=-qt(df=x-1,p=0.975), df=x-1, ncp=0.5*sqrt(x))
+  p1-p2
+}
+
+
+#f2 ist fuer die Stichprobengroesse des zweiseitigen t-Test
+f2 <- function(x)
+{
+  p1 <-pt(q= qt(df=2*(x-1),p=0.975), df=2*(x-1), ncp=0.5*sqrt(x/2))
+  p2 <-pt(q=-qt(df=2*(x-1),p=0.975), df=2*(x-1), ncp=0.5*sqrt(x/2))
+  p1-p2
+}
+```
+
+
+```{r fig.width = 5, fig.asp = .7, echo=F}
+par(mfrow=c(1,2),oma = c(0, 0, 3, 0), cex.lab=0.7,cex.main=0.9)
+plot(f1(1:28), ylab = "W'keit fuer den Fehler 2.Art", xlab="Stichprobengroesse n",
+     main="einseitiger t-Test", pch=20, ylim=c(0.2,1))
+abline(h=0.95)
+plot(f2(1:28), ylab = "W'keit fuer den Fehler 2.Art", xlab="Stichprobengroesse n",
+     main="zweiseitiger t-Test", pch=20, ylim=c(0.2,1))
+abline(h=0.95)
+mtext("Grafische Bestimmung der minimalen Stichprobengroesse n", 
+      outer = TRUE)
+```
+
+Man sieht also, bei diesem hohen Fehler zweiter Art, muss das n nur groesser als 0 sein.
+
+\newpage
+
+# Versuchsplan
 
 Wir brauchen einen Versuchsplan mit 3 Leiterinnen, Faktor der Einflussvariable(Reihenfolge der Größen), Papiergroesse, Stiftgroesse
 
@@ -11,16 +56,57 @@ Faktor: Reihenfolge der Laenge
 Block: Papiergroesse, Stiftgroesse, Versuchsleiterin
 
 ```{r}
+
 library(agricolae)
 library(knitr)
 
-Plan <-design.ab(c(2,2,3,2), r=1, design = "crd", seed = 2021, serie = 0)$book
+Plan <-design.ab(c(2,2,2,3), r=1, design = "crd", seed = 2021, serie = 0)$book
 Plan_2 <- data.frame(Versuchseinheit=0,Papiergroesse= Plan$A,
-                     Stiftgroesse=Plan$B, Versuchsleiterin=Plan$C, Reihenfolge=Plan$D)
+                     Stiftgroesse=Plan$B, Versuchsleiterin=Plan$D, Reihenfolge=Plan$C)
 
-Plan_2 <-Plan_2[with(Plan_2,order(Papiergroesse,Stiftgroesse,Versuchsleiterin)),]
+Plan_2 <-Plan_2[with(Plan_2,order(Papiergroesse,Stiftgroesse)),]
 Plan_2$Versuchseinheit <- 1:24
+
 ```
+
+
+\begin{table}[hb]
+\caption{Versuchsplan 1.Haelfte}
+\centering
+\begin{tabular}[b]{l||l|l|l|l|l|l|l|l|l|l|l|l}
+\hline
+Einheit & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\
+\hhline{=============}
+Block A & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
+\hline
+Block B & 1 & 1 & 1 & 1 & 1 & 1 & 2 & 2 & 2 & 2 & 2 & 2\\
+\hline
+Faktor & 1 & 3 & 2 & 3 & 1 & 2 & 2 & 3 & 2 & 1 & 3 & 1\\
+\hhline{=============}
+Versuchsleiterin & 2 & 2 & 2 & 1 & 1 & 1 & 2 & 2 & 1 & 1 & 1 & 2\\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[hb]
+\caption{Versuchsplan 2.Haelfte}
+\centering
+\begin{tabular}[b]{l||l|l|l|l|l|l|l|l|l|l|l|l}
+\hline
+Einheit & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20 & 21 & 22 & 23 & 24\\
+\hhline{=============}
+Block A & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2\\
+\hline
+Block B & 1 & 1 & 1 & 1 & 1 & 1 & 2 & 2 & 2 & 2 & 2 & 2\\
+\hline
+Faktor & 3 & 2 & 3 & 1 & 2 & 1 & 2 & 2 & 3 & 1 & 1 & 3\\
+\hhline{=============}
+Versuchsleiterin & 2 & 1 & 1 & 2 & 2 & 1 & 2 & 1 & 1 & 1 & 2 & 2\\
+\hline
+\end{tabular}
+\end{table}
+ 
+\newpage
 # Erklaerungen:
 A ist unsere Papiergroesse mit zwei Stufen, sodass 1:= A4 und 2:= A3 bedeutet 
 
@@ -45,42 +131,4 @@ Es handelt sich also um einen einfaktoriellen Versuchsplan mit drei Blockvariabl
 
 Es handelt sich um einen vollständig randomisierten Blockplan und ist dadurch identifizierbar. Damit wir einen balanzierten Versuchsplan haben, müssen in jedem Block gleichviele Versuche druchgeführt werden. Dies ist bei unseren Bedingungen der Fall, wenn die Stichprobegroesse dann $N=24 \cdot k$ ist $k\in \mathbb{N}$. Dies können wir realisieren, da die Anzahl unserer möglichen Probanden 28 ist. Somit wählen wir zufällig aus dieser Menge 24 Personen. 
 
-
-\begin{table}
-
-\caption{Versuchsplan 1.Haelfte}
-\centering
-\begin{tabular}[t]{l||l|l|l|l|l|l|l|l|l|l|l|l}
-\hline
-Einheit & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\
-\hline
-Block A & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
-\hline
-Block B & 1 & 1 & 1 & 1 & 1 & 1 & 2 & 2 & 2 & 2 & 2 & 2\\
-\hline
-Block C & 1 & 1 & 2 & 2 & 3 & 3 & 1 & 1 & 2 & 2 & 3 & 3\\
-\hline
-Faktor & 1 & 2 & 2 & 1 & 2 & 1 & 2 & 1 & 1 & 2 & 1 & 2\\
-\hline
-\end{tabular}
-\end{table}
-
-\begin{table}
-
-\caption{Versuchsplan 2.Haelfte}
-\centering
-\begin{tabular}[t]{l||l|l|l|l|l|l|l|l|l|l|l|l}
-\hline
-Einheit & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20 & 21 & 22 & 23 & 24\\
-\hline
-Block A & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2\\
-\hline
-Block B & 1 & 1 & 1 & 1 & 1 & 1 & 2 & 2 & 2 & 2 & 2 & 2\\
-\hline
-Block C & 1 & 1 & 2 & 2 & 3 & 3 & 1 & 1 & 2 & 2 & 3 & 3\\
-\hline
-Faktor & 2 & 1 & 1 & 2 & 2 & 1 & 2 & 1 & 1 & 2 & 1 & 2\\
-\hline
-\end{tabular}
-\end{table}
 
