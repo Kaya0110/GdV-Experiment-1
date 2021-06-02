@@ -62,36 +62,40 @@
 	Inhalt...
 \end{frame}
 
-\section{Versuchsplanung}
+\section{Versuchsplanung (1/4)}
 \begin{frame}{Versuchsplanung}
 	\textbf{1. Grafische Bestimmung der minimalen Stichprobengröße}\\
 	$\alpha =0.05$, $\beta = 0.95$ und $\delta =0.5$\\
 	 Betrachte die Stichprobengröße n $\in [1,28]$
 	 
 	\begin{center}
-		\includegraphics[scale=0.5]{Stichprobengröße1.png}
+		\includegraphics[scale=0.4]{Stichprobengröße.png}
 	\end{center}
 
 	$\Rightarrow n > 0$
 \end{frame}
 
-\begin{frame}{Versuchsplan}
+\begin{frame}{Versuchsplan (2/4)}
 	
 	
 	\begin{itemize}
 		\item Faktor: Reihenfolge der Länge (2 Stufen)
 		\item Block: Papiergröße (2 Stufen), Stiftgröße(2 Stufen)	
 		\item balanzierten Versuchsplan\\
-		 $\Rightarrow n = S_{Faktor} \cdot S_{Block\ A} \cdot  S_{Block\ B} \cdot k =2 \cdot 2\cdot 2\cdot k = 8\cdot k$ mit k $\in \mathbb{N}_+$
+		 $\Rightarrow n = S_{Faktor} \cdot S_{Block\ A} \cdot  S_{Block\ B} \cdot k =2 \cdot 2\cdot 2\cdot k = 8\cdot k$ \\
+		 mit k $\in \mathbb{N}_+$
 		
 		\item mögliche Probanden =28 $\Rightarrow$ k = 3 $\Rightarrow$ n=24 (Zufällig)
 		\item Fehler 2.Art mit n=24 : ca.0.35 (einseitiger t-Test), ca.0.6 (zweiseitiger t-Test)
 		
 		
 	\end{itemize}
-	\includegraphics[scale=0.7]{Code_Versuchsplan.png}
+	
 \end{frame}
-\begin{frame}{Versuchsplanung}
+\begin{frame}{Versuchsplanung (3/4)}
+	
+\includegraphics[scale=0.7]{Code_Versuchsplan.png}
+
 {\small
 \begin{table}[hb]
 	\caption{Versuchsplan 1.Hälfte}
@@ -111,14 +115,8 @@
 	\end{tabular}
 \end{table}}
 
-\begin{itemize}
-	\item Block A $\hat{=}$ Papiergröße mit zwei Stufen: 1:= A4 und 2:= A3  
-	\item Block B $\hat{=}$ Stiftgröße auch mit zwei Stufen:  1:= 0.5mm und 2:=2mm 
-	\item Faktor $\hat{=}$ Reihenfolge der Längen: 1:= zuerst 5cm und 2:= zuerst 20cm
-\end{itemize}
-
 \end{frame}
-\begin{frame}{Versuchsplanung}
+\begin{frame}{Versuchsplanung (4/4)}
 	
 {\small
 \begin{table}[hb]
@@ -139,6 +137,11 @@
 	\end{tabular}
 \end{table}}
 
+\begin{itemize}
+	\item Block A $\hat{=}$ Papiergröße mit zwei Stufen: 1:= A4 und 2:= A3  
+	\item Block B $\hat{=}$ Stiftgröße auch mit zwei Stufen:  1:= 0.5mm und 2:=2mm 
+	\item Faktor $\hat{=}$ Reihenfolge der Längen: 1:= zuerst 5cm und 2:= zuerst 20cm
+\end{itemize}
 
 \end{frame}
 
